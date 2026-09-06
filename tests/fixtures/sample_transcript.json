@@ -1,0 +1,250 @@
+{
+  "language": "de",
+  "duration": 18.038,
+  "backend": "fixture/espeak-ng (exakte Timecodes per Konstruktion)",
+  "source": "/home/user/Video-editing/tests/fixtures/sample_talking_head.mp4",
+  "seconds_taken": 0.0,
+  "text": "Hallo ich bin Amit ähm ich zeige dir heute unser neues Produkt Es spart dir jeden Morgen zehn Minuten Kein Aufwand kein Abo Probier es aus",
+  "segments": [
+    {
+      "id": 0,
+      "start": 0.7,
+      "end": 2.282,
+      "text": "Hallo ich bin Amit"
+    },
+    {
+      "id": 1,
+      "start": 2.832,
+      "end": 7.237,
+      "text": "ähm ich zeige dir heute unser neues Produkt"
+    },
+    {
+      "id": 2,
+      "start": 7.937,
+      "end": 11.294,
+      "text": "Es spart dir jeden Morgen zehn Minuten"
+    },
+    {
+      "id": 3,
+      "start": 12.044,
+      "end": 14.562,
+      "text": "Kein Aufwand kein Abo"
+    },
+    {
+      "id": 4,
+      "start": 15.362,
+      "end": 16.738,
+      "text": "Probier es aus"
+    }
+  ],
+  "words": [
+    {
+      "i": 0,
+      "w": "Hallo",
+      "start": 0.7,
+      "end": 1.096,
+      "prob": 0.99,
+      "segment": 0
+    },
+    {
+      "i": 1,
+      "w": "ich",
+      "start": 1.196,
+      "end": 1.443,
+      "prob": 0.99,
+      "segment": 0
+    },
+    {
+      "i": 2,
+      "w": "bin",
+      "start": 1.503,
+      "end": 1.86,
+      "prob": 0.99,
+      "segment": 0
+    },
+    {
+      "i": 3,
+      "w": "Amit",
+      "start": 1.92,
+      "end": 2.282,
+      "prob": 0.99,
+      "segment": 0
+    },
+    {
+      "i": 4,
+      "w": "ähm",
+      "start": 2.832,
+      "end": 3.231,
+      "prob": 0.99,
+      "segment": 1
+    },
+    {
+      "i": 5,
+      "w": "ich",
+      "start": 3.851,
+      "end": 4.098,
+      "prob": 0.99,
+      "segment": 1
+    },
+    {
+      "i": 6,
+      "w": "zeige",
+      "start": 4.158,
+      "end": 4.64,
+      "prob": 0.99,
+      "segment": 1
+    },
+    {
+      "i": 7,
+      "w": "dir",
+      "start": 4.7,
+      "end": 5.036,
+      "prob": 0.99,
+      "segment": 1
+    },
+    {
+      "i": 8,
+      "w": "heute",
+      "start": 5.096,
+      "end": 5.563,
+      "prob": 0.99,
+      "segment": 1
+    },
+    {
+      "i": 9,
+      "w": "unser",
+      "start": 5.663,
+      "end": 6.073,
+      "prob": 0.99,
+      "segment": 1
+    },
+    {
+      "i": 10,
+      "w": "neues",
+      "start": 6.133,
+      "end": 6.568,
+      "prob": 0.99,
+      "segment": 1
+    },
+    {
+      "i": 11,
+      "w": "Produkt",
+      "start": 6.628,
+      "end": 7.237,
+      "prob": 0.99,
+      "segment": 1
+    },
+    {
+      "i": 12,
+      "w": "Es",
+      "start": 7.937,
+      "end": 8.204,
+      "prob": 0.99,
+      "segment": 2
+    },
+    {
+      "i": 13,
+      "w": "spart",
+      "start": 8.264,
+      "end": 8.719,
+      "prob": 0.99,
+      "segment": 2
+    },
+    {
+      "i": 14,
+      "w": "dir",
+      "start": 8.779,
+      "end": 9.115,
+      "prob": 0.99,
+      "segment": 2
+    },
+    {
+      "i": 15,
+      "w": "jeden",
+      "start": 9.175,
+      "end": 9.64,
+      "prob": 0.99,
+      "segment": 2
+    },
+    {
+      "i": 16,
+      "w": "Morgen",
+      "start": 9.7,
+      "end": 10.095,
+      "prob": 0.99,
+      "segment": 2
+    },
+    {
+      "i": 17,
+      "w": "zehn",
+      "start": 10.195,
+      "end": 10.677,
+      "prob": 0.99,
+      "segment": 2
+    },
+    {
+      "i": 18,
+      "w": "Minuten",
+      "start": 10.737,
+      "end": 11.294,
+      "prob": 0.99,
+      "segment": 2
+    },
+    {
+      "i": 19,
+      "w": "Kein",
+      "start": 12.044,
+      "end": 12.486,
+      "prob": 0.99,
+      "segment": 3
+    },
+    {
+      "i": 20,
+      "w": "Aufwand",
+      "start": 12.546,
+      "end": 13.182,
+      "prob": 0.99,
+      "segment": 3
+    },
+    {
+      "i": 21,
+      "w": "kein",
+      "start": 13.582,
+      "end": 14.023,
+      "prob": 0.99,
+      "segment": 3
+    },
+    {
+      "i": 22,
+      "w": "Abo",
+      "start": 14.083,
+      "end": 14.562,
+      "prob": 0.99,
+      "segment": 3
+    },
+    {
+      "i": 23,
+      "w": "Probier",
+      "start": 15.362,
+      "end": 15.985,
+      "prob": 0.99,
+      "segment": 4
+    },
+    {
+      "i": 24,
+      "w": "es",
+      "start": 16.045,
+      "end": 16.312,
+      "prob": 0.99,
+      "segment": 4
+    },
+    {
+      "i": 25,
+      "w": "aus",
+      "start": 16.372,
+      "end": 16.738,
+      "prob": 0.99,
+      "segment": 4
+    }
+  ]
+}

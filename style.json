@@ -1,0 +1,239 @@
+{
+  "schema_version": 1,
+  "meta": {
+    "name": "default",
+    "source": "handgeschrieben",
+    "measured_from": null,
+    "measured_at": null,
+    "notes": "Basis-Stil. 'vidkit learn <ref.mp4>' ueberschreibt die gemessenen Felder."
+  },
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "aspect": "9:16"
+  },
+  "safe_zones": {
+    "comment": "Relative Raender, in denen keine Grafik liegen darf (TikTok/Reels/Shorts UI).",
+    "top": 0.08,
+    "bottom": 0.2,
+    "left": 0.06,
+    "right": 0.14
+  },
+  "cuts": {
+    "avg_shot_seconds": 2.6,
+    "min_shot_seconds": 0.9,
+    "p10_shot_seconds": 1.1,
+    "cuts_per_10s": 3.8,
+    "shot_length_histogram": [],
+    "silence_cut": {
+      "enabled": true,
+      "min_pause_seconds": 0.45,
+      "keep_head_seconds": 0.08,
+      "keep_tail_seconds": 0.12,
+      "min_keep_seconds": 0.25,
+      "comment": "min_keep_seconds: kuerzere Reste ohne Wort werden mit weggeschnitten"
+    },
+    "cut_filler_words": true,
+    "filler_words": [
+      "ähm",
+      "äh",
+      "ähm,",
+      "öhm",
+      "hmm",
+      "mhm",
+      "also ähm"
+    ]
+  },
+  "motion": {
+    "zoom": {
+      "enabled": true,
+      "direction": "in",
+      "min_scale": 1.03,
+      "max_scale": 1.08,
+      "duration": 0.45,
+      "easing": "easeOutCubic",
+      "on_sentence_start": true,
+      "on_emphasis": true,
+      "max_per_10s": 2.5
+    },
+    "pan": {
+      "enabled": false,
+      "max_shift_rel": 0.0,
+      "duration": 0.6,
+      "easing": "easeInOutSine"
+    }
+  },
+  "typography": {
+    "font_family": "\"Inter Tight\", \"Inter\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "font_files": [],
+    "font_weight": 800,
+    "letter_spacing_em": -0.01,
+    "line_height": 1.04
+  },
+  "captions": {
+    "enabled": true,
+    "words_per_group": 3,
+    "max_group_seconds": 1.6,
+    "min_group_seconds": 0.35,
+    "position": {
+      "x_rel": 0.5,
+      "y_rel": 0.7,
+      "anchor": "center",
+      "max_width_rel": 0.86
+    },
+    "font_size_rel": 0.042,
+    "uppercase": true,
+    "color": "#FFFFFF",
+    "active_color": "#D6FF3D",
+    "stroke": {
+      "enabled": true,
+      "width_rel": 0.0055,
+      "color": "#000000"
+    },
+    "shadow": {
+      "enabled": true,
+      "blur_rel": 0.01,
+      "dy_rel": 0.004,
+      "color": "rgba(0,0,0,0.55)"
+    },
+    "background": {
+      "enabled": false,
+      "color": "rgba(0,0,0,0.35)",
+      "padding_rel": 0.012,
+      "radius_rel": 0.014
+    },
+    "animation": {
+      "in": "pop",
+      "in_duration": 0.12,
+      "overshoot": 1.08,
+      "out": "none",
+      "out_duration": 0.0,
+      "easing": "easeOutBack"
+    }
+  },
+  "overlays": {
+    "enabled": true,
+    "per_10s": 1.4,
+    "words_per_overlay": 2,
+    "hold_seconds": 0.7,
+    "min_gap_seconds": 1.2,
+    "position": {
+      "x_rel": 0.5,
+      "y_rel": 0.32,
+      "anchor": "center",
+      "max_width_rel": 0.82
+    },
+    "font_size_rel": 0.085,
+    "uppercase": true,
+    "color": "#FFFFFF",
+    "accent_color": "#D6FF3D",
+    "stroke": {
+      "enabled": true,
+      "width_rel": 0.007,
+      "color": "#000000"
+    },
+    "shadow": {
+      "enabled": true,
+      "blur_rel": 0.014,
+      "dy_rel": 0.006,
+      "color": "rgba(0,0,0,0.5)"
+    },
+    "background": {
+      "enabled": false,
+      "color": "#D6FF3D",
+      "padding_rel": 0.018,
+      "radius_rel": 0.02
+    },
+    "animation": {
+      "in": "slide_up",
+      "in_duration": 0.22,
+      "distance_rel": 0.05,
+      "overshoot": 1.05,
+      "out": "fade",
+      "out_duration": 0.15,
+      "easing": "easeOutBack"
+    }
+  },
+  "motion_graphics": {
+    "enabled": true,
+    "per_10s": 0.3,
+    "template": "white_screen",
+    "duration": 0.8,
+    "background": "#FFFFFF",
+    "text_color": "#111111",
+    "accent_color": "#D6FF3D",
+    "font_size_rel": 0.075
+  },
+  "color": {
+    "enabled": true,
+    "grade": {
+      "brightness": 0.0,
+      "contrast": 1.06,
+      "saturation": 1.12,
+      "gamma": 1.0,
+      "temperature_shift": 0.0
+    },
+    "measured": {}
+  },
+  "audio": {
+    "voice_lufs": -14.0,
+    "voice_true_peak_db": -1.0,
+    "music": {
+      "present": false,
+      "file": null,
+      "gain_db_rel_voice": -18.0,
+      "duck_db": -8.0
+    },
+    "sfx": {
+      "enabled": true,
+      "gain_db_rel_voice": -12.0,
+      "min_gap_seconds": 0.25,
+      "avoid_repeat_last": 3,
+      "on_cut": {
+        "enabled": true,
+        "probability": 0.8,
+        "categories": [
+          "whoosh",
+          "transition"
+        ],
+        "offset_seconds": -0.03
+      },
+      "on_overlay": {
+        "enabled": true,
+        "probability": 0.9,
+        "categories": [
+          "pop",
+          "impact",
+          "click"
+        ],
+        "offset_seconds": 0.0
+      },
+      "on_zoom": {
+        "enabled": false,
+        "probability": 0.4,
+        "categories": [
+          "sub",
+          "riser"
+        ],
+        "offset_seconds": 0.0
+      },
+      "duck_under_voice": false
+    }
+  },
+  "broll": {
+    "enabled": true,
+    "ratio": 0.22,
+    "per_10s": 0.8,
+    "min_seconds": 1.2,
+    "max_seconds": 2.5,
+    "queries_per_slot": 3,
+    "stopwords_extra": []
+  },
+  "density": {
+    "overlays_per_10s": 1.4,
+    "cuts_per_10s": 3.8,
+    "captions_per_10s": 6.0,
+    "broll_ratio": 0.22
+  }
+}

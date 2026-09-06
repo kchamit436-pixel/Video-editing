@@ -1,0 +1,41 @@
+{
+  "duration": 10.6,
+  "shots": 6,
+  "cut_times": [
+    1.6,
+    2.5,
+    4.9,
+    6.1,
+    9.1
+  ],
+  "cuts_per_10s": 4.72,
+  "shot_lengths": [
+    1.6,
+    0.9,
+    2.4,
+    1.2,
+    3.0,
+    1.5
+  ],
+  "avg_shot_seconds": 1.767,
+  "min_shot_seconds": 0.9,
+  "zoom_moves": 3,
+  "zoom_max_scale": 1.14,
+  "zoom_duration": 0.5,
+  "zoom_easing": "easeOutCubic",
+  "overlay_times": [
+    0.15,
+    2.65,
+    6.25
+  ],
+  "overlays": 3,
+  "overlay_hold_seconds": 0.8,
+  "overlay_font_size_rel": 0.095,
+  "overlay_y_rel": 0.3475,
+  "caption_font_size_rel": 0.04,
+  "caption_y_rel": 0.74,
+  "uppercase": true,
+  "music_present": true,
+  "sfx_on_every_cut": true,
+  "sfx_on_every_overlay": true
+}

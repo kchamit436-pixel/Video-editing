@@ -1,0 +1,265 @@
+<!doctype html>
+<meta charset="utf-8">
+<!--
+  Ein Element (Caption, Overlay, Motion-Graphic) als HTML/CSS.
+  Python injiziert window.VIDKIT und ruft pro Frame vidkitRender(t) auf.
+  Kein ffmpeg-drawtext: hier gibt es echte Typografie, Easing und Overshoot.
+-->
+<style>
+  html, body {
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    background: transparent; overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  #stage { position: relative; width: 100%; height: 100%; }
+  .el {
+    position: absolute; box-sizing: border-box;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; will-change: transform, opacity;
+  }
+  .line { display: block; }
+  .word { display: inline-block; white-space: pre; }
+  .mg-card {
+    position: absolute; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+  }
+</style>
+<div id="stage"></div>
+<!--VIDKIT_INJECT-->
+<script>
+(() => {
+  const S = window.VIDKIT;
+  const W = S.frame.width, H = S.frame.height;
+  const px = (rel) => rel * H;                 // relative Groessen immer auf die Hoehe
+  const stage = document.getElementById('stage');
+
+  const EASE = {
+    linear: p => p,
+    easeOutCubic: p => 1 - Math.pow(1 - p, 3),
+    easeInOutCubic: p => p < .5 ? 4*p*p*p : 1 - Math.pow(-2*p + 2, 3) / 2,
+    easeOutQuad: p => 1 - Math.pow(1 - p, 2),
+    easeOutBack: p => { const c1 = 1.70158, c3 = c1 + 1;
+      return 1 + c3 * Math.pow(p - 1, 3) + c1 * Math.pow(p - 1, 2); },
+    easeInOutSine: p => -(Math.cos(Math.PI * p) - 1) / 2,
+    easeOutExpo: p => p >= 1 ? 1 : 1 - Math.pow(2, -10 * p),
+  };
+  const ease = (name, p) => (EASE[name] || EASE.easeOutCubic)(Math.min(1, Math.max(0, p)));
+
+  function textShadow(cfg) {
+    const parts = [];
+    const st = cfg.stroke || {};
+    if (st.enabled) {
+      // Kontur aus acht Schatten — traegt zuverlaessiger als -webkit-text-stroke,
+      // weil die Kontur aussen liegt und die Glyphenform nicht auffrisst.
+      const w = px(st.width_rel || 0.005);
+      for (let a = 0; a < 8; a++) {
+        const r = (a / 8) * Math.PI * 2;
+        parts.push(`${(Math.cos(r)*w).toFixed(2)}px ${(Math.sin(r)*w).toFixed(2)}px 0 ${st.color || '#000'}`);
+      }
+    }
+    const sh = cfg.shadow || {};
+    if (sh.enabled) {
+      parts.push(`0 ${px(sh.dy_rel || 0.004).toFixed(2)}px ${px(sh.blur_rel || 0.01).toFixed(2)}px ${sh.color || 'rgba(0,0,0,.5)'}`);
+    }
+    return parts.join(', ');
+  }
+
+  function safeBox() {
+    const sz = S.safe_zones || {};
+    return {
+      left: (sz.left || 0) * W,
+      right: W - (sz.right || 0) * W,
+      top: (sz.top || 0) * H,
+      bottom: H - (sz.bottom || 0) * H,
+    };
+  }
+
+  // Element in die Safe Zone schieben, statt es zu beschneiden.
+  function placeInSafeZone(node, cfg) {
+    const box = safeBox();
+    const maxW = Math.min((cfg.position.max_width_rel || 0.86) * W, box.right - box.left);
+    node.style.width = maxW + 'px';
+    node.style.left = (cfg.position.x_rel * W - maxW / 2) + 'px';
+    node.style.transform = 'none';
+    const r = node.getBoundingClientRect();
+    let top = cfg.position.y_rel * H - r.height / 2;
+    top = Math.max(box.top, Math.min(top, box.bottom - r.height));
+    let left = parseFloat(node.style.left);
+    left = Math.max(box.left, Math.min(left, box.right - maxW));
+    node.style.left = left + 'px';
+    node.style.top = top + 'px';
+  }
+
+  function baseTypography(node, cfg) {
+    const ty = S.typography || {};
+    node.style.fontFamily = ty.font_family || 'sans-serif';
+    node.style.fontWeight = ty.font_weight || 800;
+    node.style.letterSpacing = (ty.letter_spacing_em || 0) + 'em';
+    node.style.lineHeight = ty.line_height || 1.05;
+    node.style.fontSize = px(cfg.font_size_rel || 0.05) + 'px';
+    node.style.color = cfg.color || '#fff';
+    node.style.textTransform = cfg.uppercase ? 'uppercase' : 'none';
+    node.style.textShadow = textShadow(cfg);
+    const bg = cfg.background || {};
+    if (bg.enabled) {
+      node.style.background = bg.color;
+      node.style.padding = px(bg.padding_rel || 0.012) + 'px ' + px((bg.padding_rel || 0.012) * 1.6) + 'px';
+      node.style.borderRadius = px(bg.radius_rel || 0.014) + 'px';
+    }
+  }
+
+  let api = null;
+
+  // --- Captions: Wort fuer Wort, aktives Wort in der Highlight-Farbe --------
+  function buildCaption() {
+    const cfg = S.style, el = S.element;
+    const node = document.createElement('div');
+    node.className = 'el';
+    baseTypography(node, cfg);
+    const line = document.createElement('div');
+    line.className = 'line';
+    const spans = el.words.map((w, i) => {
+      const s = document.createElement('span');
+      s.className = 'word';
+      s.textContent = (i ? ' ' : '') + w.w;
+      line.appendChild(s);
+      return s;
+    });
+    node.appendChild(line);
+    stage.appendChild(node);
+    placeInSafeZone(node, cfg);
+
+    const anim = cfg.animation || {};
+    return (t) => {
+      const inD = anim.in_duration || 0.12;
+      let scale = 1, opacity = 1;
+      if (anim.in === 'pop') {
+        const p = Math.min(1, ease(anim.easing || 'easeOutBack', t / inD));
+        const over = anim.overshoot || 1.08;
+        scale = (0.85 + 0.15 * p) * (1 + (over - 1) * Math.sin(Math.PI * Math.min(1, t / inD)));
+        opacity = Math.min(1, t / (inD * 0.6));
+      } else if (anim.in === 'fade') {
+        opacity = Math.min(1, t / inD);
+      }
+      node.style.opacity = opacity;
+      node.style.transform = `scale(${scale.toFixed(4)})`;
+      spans.forEach((s, i) => {
+        const w = el.words[i];
+        const active = t >= w.t_in - 0.02 && t < w.t_out + 0.06;
+        s.style.color = active ? (cfg.active_color || cfg.color) : (cfg.color || '#fff');
+        const spoken = t >= w.t_in - 0.02;
+        s.style.opacity = spoken ? 1 : (cfg.dim_upcoming === false ? 1 : 0.55);
+      });
+    };
+  }
+
+  // --- Grosse Keyword-Einblendung ------------------------------------------
+  function buildOverlay() {
+    const cfg = S.style, el = S.element;
+    const node = document.createElement('div');
+    node.className = 'el';
+    baseTypography(node, cfg);
+    const line = document.createElement('div');
+    line.className = 'line';
+    line.textContent = el.text;
+    node.appendChild(line);
+    stage.appendChild(node);
+    placeInSafeZone(node, cfg);
+
+    const anim = cfg.animation || {};
+    const dist = px(anim.distance_rel || 0.05);
+    const dur = el.t_out - el.t_in;
+    return (t) => {
+      const inD = anim.in_duration || 0.22;
+      const outD = anim.out_duration || 0.15;
+      let dy = 0, scale = 1, opacity = 1;
+      const p = ease(anim.easing || 'easeOutBack', t / inD);
+      if (anim.in === 'slide_up') {
+        dy = (1 - p) * dist;
+        opacity = Math.min(1, t / (inD * 0.5));
+        scale = 1 + ((anim.overshoot || 1) - 1) * Math.sin(Math.PI * Math.min(1, t / inD));
+      } else if (anim.in === 'pop') {
+        scale = (0.8 + 0.2 * p) * (1 + ((anim.overshoot || 1) - 1) * Math.sin(Math.PI * Math.min(1, t / inD)));
+        opacity = Math.min(1, t / (inD * 0.5));
+      } else if (anim.in === 'fade') {
+        opacity = Math.min(1, t / inD);
+      }
+      const tOut = dur - t;
+      if (anim.out === 'fade' && tOut < outD) opacity *= Math.max(0, tOut / outD);
+      if (anim.out === 'slide_down' && tOut < outD) {
+        const q = 1 - Math.max(0, tOut / outD);
+        dy += q * dist; opacity *= (1 - q);
+      }
+      node.style.opacity = opacity;
+      node.style.transform = `translateY(${dy.toFixed(2)}px) scale(${scale.toFixed(4)})`;
+    };
+  }
+
+  // --- Motion Graphic: White-Screen-Karte ----------------------------------
+  function buildMotionGraphic() {
+    const cfg = S.style, el = S.element;
+    const card = document.createElement('div');
+    card.className = 'mg-card';
+    card.style.left = '0px'; card.style.top = '0px';
+    card.style.width = W + 'px'; card.style.height = H + 'px';
+    card.style.background = cfg.background || '#fff';
+    const ty = S.typography || {};
+    card.style.fontFamily = ty.font_family || 'sans-serif';
+    card.style.fontWeight = ty.font_weight || 800;
+    card.style.color = cfg.text_color || '#111';
+    card.style.fontSize = px(cfg.font_size_rel || 0.075) + 'px';
+    card.style.textTransform = cfg.uppercase === false ? 'none' : 'uppercase';
+    if (el.text) {
+      const t1 = document.createElement('div');
+      t1.textContent = el.text;
+      t1.style.padding = '0 ' + px(0.06) + 'px';
+      card.appendChild(t1);
+      const bar = document.createElement('div');
+      bar.style.marginTop = px(0.02) + 'px';
+      bar.style.height = px(0.008) + 'px';
+      bar.style.background = cfg.accent_color || '#000';
+      bar.style.width = px(0.12) + 'px';
+      card.appendChild(bar);
+    }
+    stage.appendChild(card);
+    const dur = el.t_out - el.t_in;
+    return (t) => {
+      const inD = Math.min(0.18, dur * 0.3), outD = Math.min(0.18, dur * 0.3);
+      const pin = ease('easeOutExpo', t / inD);
+      const pout = ease('easeOutExpo', (dur - t) / outD);
+      const cover = Math.min(pin, Math.max(0, pout));
+      // Wipe von unten nach oben rein, nach oben wieder raus
+      card.style.clipPath = `inset(${((1 - cover) * 100).toFixed(2)}% 0 0 0)`;
+      card.style.opacity = 1;
+    };
+  }
+
+  const builders = { captions: buildCaption, overlays: buildOverlay,
+                     motion_graphics: buildMotionGraphic };
+
+  window.vidkitRender = (t) => { api(t); };
+
+  // Groesster Kasten ueber die gesamte Laufzeit — Python schneidet danach zu.
+  window.vidkitBounds = (samples) => {
+    let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+    for (const t of samples) {
+      api(t);
+      for (const node of stage.children) {
+        const r = node.getBoundingClientRect();
+        if (r.width <= 0 || r.height <= 0) continue;
+        x0 = Math.min(x0, r.left); y0 = Math.min(y0, r.top);
+        x1 = Math.max(x1, r.right); y1 = Math.max(y1, r.bottom);
+      }
+    }
+    if (x1 < x0) return null;
+    return { x: x0, y: y0, width: x1 - x0, height: y1 - y0 };
+  };
+  // Erst bauen, wenn die Schriften stehen — sonst misst der Browser die
+  // Textkaesten mit der Ersatzschrift aus und alles sitzt ein paar Pixel daneben.
+  (async () => {
+    if (document.fonts && document.fonts.ready) { await document.fonts.ready; }
+    api = (builders[S.kind] || buildOverlay)();
+    window.vidkitReady = true;
+  })();
+})();
+</script>

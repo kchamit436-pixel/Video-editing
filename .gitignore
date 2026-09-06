@@ -1,0 +1,34 @@
+.venv/
+__pycache__/
+*.pyc
+
+# Projektordner: Arbeitsdateien und Renderergebnisse bleiben lokal.
+# Die Plaene (edit.json, style.json) sind bewusst ausgenommen — die will man
+# aufheben und vergleichen koennen.
+projects/*/ingest.mp4
+projects/*/out.mp4
+projects/*/preview.mp4
+projects/*/render/
+projects/*/assets/
+projects/*/stock/
+projects/*/transcript.json
+projects/*/ingest.json
+
+# Das Demo-Projekt entsteht beim Testlauf neu und gehoert niemandem.
+/projects/demo/
+
+# Eigene SFX-Bibliothek: die Ordnerstruktur ist im Repo, die Sounds nicht.
+assets/sfx/**/*.wav
+assets/sfx/**/*.mp3
+assets/sfx/**/*.aif
+assets/sfx/**/*.aiff
+assets/sfx/**/*.flac
+assets/sfx/**/*.m4a
+assets/sfx/**/*.ogg
+assets/sfx/.peaks.json
+
+# Testmaterial wird per Skript erzeugt
+tests/fixtures/*.mp4
+
+*.measurements.json
+.DS_Store

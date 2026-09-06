@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="de">
+<meta charset="utf-8">
+<title>vidkit — Schnittplan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%23d6ff3d%27/%3E%3Cpath d=%27M12 9l11 7-11 7z%27 fill=%27%2314161a%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/app.css">
+<body>
+<header>
+  <strong>vidkit</strong>
+  <span id="project" class="muted"></span>
+  <span class="grow"></span>
+  <span id="status" class="muted">bereit</span>
+  <button id="save">Speichern</button>
+  <button id="assets">Assets bauen</button>
+  <button id="render" class="primary">Rendern</button>
+</header>
+
+<main>
+  <section id="left">
+    <div id="player">
+      <video id="video" controls preload="metadata"></video>
+      <div id="videolabel" class="muted"></div>
+    </div>
+    <div id="inspector">
+      <div class="empty muted">Klicke einen Block in der Zeitleiste an.</div>
+    </div>
+  </section>
+
+  <section id="right">
+    <div id="toolbar">
+      <button data-seek="-1">◀ 1 s</button>
+      <button id="playpause">Play</button>
+      <button data-seek="1">1 s ▶</button>
+      <span id="time" class="mono">0.00 s</span>
+      <span class="grow"></span>
+      <label>Zoom <input id="scale" type="range" min="20" max="400" value="90"></label>
+    </div>
+    <div id="timeline">
+      <div id="ruler"></div>
+      <div id="lanes"></div>
+      <div id="playhead"></div>
+    </div>
+    <pre id="logbox" hidden></pre>
+  </section>
+</main>
+<script src="/app.js"></script>
