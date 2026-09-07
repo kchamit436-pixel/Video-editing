@@ -8,6 +8,7 @@ die oben im Skript stehen.
 from __future__ import annotations
 
 import json
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -34,6 +35,13 @@ CAPTION_SIZE = 0.040      # relativ zur Bildhoehe
 OVERLAY_SIZE = 0.095
 
 
+def require_espeak() -> None:
+    """espeak-ng erzeugt die Sprachspur des Testmaterials."""
+    if shutil.which("espeak-ng") is None:
+        sys.exit("espeak-ng nicht gefunden — es synthetisiert die Sprache fuer das\n"
+                 "Testmaterial.  Auf dem Mac:  brew install espeak-ng")
+
+
 def run(cmd: list[str]) -> None:
     p = subprocess.run(cmd, capture_output=True, text=True)
     if p.returncode != 0:
@@ -41,6 +49,7 @@ def run(cmd: list[str]) -> None:
 
 
 def main() -> int:
+    require_espeak()
     if not Path(FONT).exists():
         sys.exit(f"Schrift fehlt: {FONT}")
     OUT.mkdir(parents=True, exist_ok=True)

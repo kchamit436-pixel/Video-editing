@@ -8,6 +8,7 @@ Schritte plan/assets/sfx/render lassen sich ohne Whisper-Download testen.
 from __future__ import annotations
 
 import json
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -33,6 +34,13 @@ TAIL = 1.00
 SR = 48000
 
 
+def require_espeak() -> None:
+    """espeak-ng erzeugt die Sprachspur des Testmaterials."""
+    if shutil.which("espeak-ng") is None:
+        sys.exit("espeak-ng nicht gefunden — es synthetisiert die Sprache fuer das\n"
+                 "Testmaterial.  Auf dem Mac:  brew install espeak-ng")
+
+
 def run(cmd: list[str]) -> None:
     proc = subprocess.run(cmd, capture_output=True, text=True)
     if proc.returncode != 0:
@@ -47,6 +55,7 @@ def wav_duration(path: Path) -> float:
 
 
 def main() -> int:
+    require_espeak()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     tmp = Path(tempfile.mkdtemp(prefix="vidkit-fixture-"))
     parts: list[Path] = []

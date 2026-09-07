@@ -18,6 +18,7 @@ Du kannst jeden Schritt einzeln wiederholen, ohne alles neu zu rendern.
 
 ```bash
 brew install ffmpeg tesseract tesseract-lang     # tesseract nur für 'learn'
+brew install espeak-ng                           # nur für das Testmaterial
 git clone <dieses-repo> && cd Video-editing
 python3.11 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
@@ -315,7 +316,8 @@ Sekunden, nicht Minuten.
 
 ## Testlauf
 
-Das Testmaterial wird lokal erzeugt, nichts wird heruntergeladen:
+Das Testmaterial wird lokal erzeugt, nichts wird heruntergeladen. Die Sprachspur
+synthetisiert `espeak-ng` (`brew install espeak-ng`):
 
 ```bash
 python tests/make_fixture.py       # Rohvideo + Transkript mit exakten Zeiten
