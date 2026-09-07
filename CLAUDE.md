@@ -46,6 +46,7 @@ vidkit/
   config.py       style.json laden, mergen, Punktzugriff (Style.get)
   paths.py        Projektpfade; resolve_asset() löst Pfade aus der edit.json
   editdoc.py      edit.json lesen/schreiben/sortieren, Schema-Version
+  edits.py        Schnittoperationen: Passage loeschen/teilen/trimmen (Ripple)
   ffmpeg.py       Probing, Encoder-Wahl, Loudness, Audio nach numpy
   german.py       Stoppwörter, Füllwörter, Keyword-Bewertung
   ingest.py transcribe.py plan.py assets.py sfx.py stock.py render.py serve.py
@@ -99,6 +100,12 @@ Weitere Stellen, an denen es leicht schiefgeht:
 * Die OCR läuft über zwei Bildkanäle (Luma und LAB-b). Gelber Text auf heller
   Fläche hat in Luma fast keinen Kontrast. Zusatzkanäle dürfen nur füllen, was
   der Luma-Kanal gar nicht gesehen hat — ihre Kästen sind unzuverlässig.
+* **Positionen kommen aus der `edit.json`, nicht aus dem Asset-Manifest.** Das
+  Manifest liefert nur die Cliplänge. Andersherum standen Overlays nach einem
+  Schnitt an ihren alten Stellen oder fehlten ganz.
+* Nach jeder Schnittoperation sind die gerenderten Assets veraltet.
+  `assets.stale_elements()` sagt, welche — `render` warnt, die Oberfläche baut
+  sie beim Rendern selbst neu.
 * Einblendungen werden über **Lage und Größe** verfolgt, nicht über den Text.
   OCR-Ausgabe schwankt von Bild zu Bild und würde eine Einblendung sonst in
   mehrere zerlegen; Dichte und Standzeit wären dann Unsinn.

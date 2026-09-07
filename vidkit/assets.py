@@ -81,6 +81,21 @@ def _chromium_kwargs() -> dict:
     return {"executable_path": exe} if exe else {}
 
 
+def stale_elements(project: Project, style: Style, doc: dict) -> list[str]:
+    """IDs der Elemente, deren gerendertes Asset nicht mehr zum Plan passt."""
+    if not project.assets_manifest.exists():
+        return [e["id"] for k in KINDS for e in elements(doc, k)]
+    manifest = read_json(project.assets_manifest).get("elements", {})
+    font_css = _font_css(style)
+    out = []
+    for kind in KINDS:
+        for el in elements(doc, kind):
+            info = manifest.get(el["id"])
+            if not info or info.get("hash") != _hash(_payload(kind, el, style), font_css):
+                out.append(el["id"])
+    return out
+
+
 def build_assets(project: Project, style: Style, *, kinds: list[str] | None = None,
                  only: list[str] | None = None, force: bool = False) -> Path:
     try:

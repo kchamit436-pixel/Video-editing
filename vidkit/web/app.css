@@ -1,6 +1,7 @@
 :root {
   --bg: #14161a; --panel: #1c1f25; --line: #2b303a; --text: #e6e9ef;
   --muted: #8b93a3; --accent: #d6ff3d; --accent2: #4ea1ff;
+  --segments: #7d8794;
   --captions: #4ea1ff; --overlays: #d6ff3d; --zooms: #ff9f4e;
   --broll: #b07aff; --motion_graphics: #4ee0b0; --sfx: #ff6b8b;
 }
@@ -39,6 +40,8 @@ main { display: grid; grid-template-columns: 380px 1fr; gap: 14px; padding: 14px
 .lane { position: relative; height: 42px; border-bottom: 1px solid #23272f; }
 .lane .name { position: sticky; left: 0; z-index: 3; display: inline-block; padding: 2px 7px;
   font-size: 11px; color: var(--muted); background: var(--panel); border-radius: 0 0 6px 0; }
+.lane[data-kind="segments"] .block { top: 14px; height: 26px; color: #fff;
+  font-weight: 500; border: 1px solid #99a3b0; }
 .block { position: absolute; top: 18px; height: 20px; border-radius: 5px; cursor: grab;
   font-size: 11px; line-height: 20px; padding: 0 6px; overflow: hidden; white-space: nowrap;
   color: #10131a; font-weight: 600; user-select: none; }

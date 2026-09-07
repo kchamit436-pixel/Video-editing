@@ -164,9 +164,12 @@ def _asset_inputs(project: Project, doc: dict) -> list[dict]:
             if not p.exists():
                 warn(f"Asset fehlt: {p}")
                 continue
+            # Position immer aus der edit.json — sie ist die Wahrheit. Aus dem
+            # Manifest kommt nur die Laenge des gerenderten Clips (mit Auslauf).
+            clip_len = float(info.get("t_out", e["t_out"])) - float(info.get("t_in", e["t_in"]))
+            t_in = float(e["t_in"])
             items.append({"id": e["id"], "kind": kind, "path": p,
-                          "t_in": float(info.get("t_in", e["t_in"])),
-                          "t_out": float(info.get("t_out", e["t_out"])),
+                          "t_in": t_in, "t_out": t_in + max(clip_len, 0.04),
                           "x": int(info.get("x", 0)), "y": int(info.get("y", 0))})
     items.sort(key=lambda x: (("motion_graphics", "overlays", "captions").index(x["kind"]),
                               x["t_in"]))
@@ -184,6 +187,13 @@ def render_composite(project: Project, style: Style, doc: dict, *, hw: bool = Tr
 
     brolls = _broll_inputs(project, doc)
     assets = _asset_inputs(project, doc)
+    from .assets import stale_elements
+    stale = stale_elements(project, style, doc)
+    if stale:
+        warn(f"{len(stale)} Element(e) haben sich seit dem letzten 'assets'-Lauf geaendert "
+             f"({', '.join(stale[:4])}{' …' if len(stale) > 4 else ''}).\n"
+             f"   Erst 'vidkit assets -p {project.name}' laufen lassen, sonst fehlen sie "
+             f"oder stehen falsch.")
     if not brolls and not assets:
         # Nichts zu ueberlagern — Basis durchreichen.
         import shutil

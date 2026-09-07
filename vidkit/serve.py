@@ -18,6 +18,7 @@ from urllib.parse import parse_qs, urlparse
 
 from .config import Style
 from .editdoc import ELEMENT_KINDS, SCHEMA_VERSION, load_edit, save_edit, sort_all
+from .edits import delete_range, delete_segment, split_segment, trim_segment
 from .paths import Project, repo_root
 from .util import log, ok, step, warn
 
@@ -34,25 +35,35 @@ class RenderJob:
         self.returncode: int | None = None
         self.lock = threading.Lock()
 
-    def start(self, args: list[str], cwd: Path) -> bool:
+    def start(self, steps: list[list[str]], cwd: Path) -> bool:
+        """Mehrere Befehle nacheinander. Bricht ab, sobald einer fehlschlaegt."""
+        if steps and isinstance(steps[0], str):      # Bequemlichkeit: ein einzelner Befehl
+            steps = [steps]                          # type: ignore[list-item]
         with self.lock:
             if self.running:
                 return False
             self.running = True
             self.returncode = None
-            self.lines = [f"$ {' '.join(args)}"]
+            self.lines = []
         def run() -> None:
+            code = 0
             try:
-                self.proc = subprocess.Popen(args, cwd=str(cwd), stdout=subprocess.PIPE,
-                                             stderr=subprocess.STDOUT, text=True, bufsize=1)
-                assert self.proc.stdout is not None
-                for line in self.proc.stdout:
+                for args in steps:
                     with self.lock:
-                        self.lines.append(line.rstrip("\n"))
-                        if len(self.lines) > 400:
-                            self.lines = self.lines[-400:]
-                self.proc.wait()
-                self.returncode = self.proc.returncode
+                        self.lines.append(f"$ {' '.join(args)}")
+                    self.proc = subprocess.Popen(args, cwd=str(cwd), stdout=subprocess.PIPE,
+                                                 stderr=subprocess.STDOUT, text=True, bufsize=1)
+                    assert self.proc.stdout is not None
+                    for line in self.proc.stdout:
+                        with self.lock:
+                            self.lines.append(line.rstrip("\n"))
+                            if len(self.lines) > 400:
+                                self.lines = self.lines[-400:]
+                    self.proc.wait()
+                    code = self.proc.returncode
+                    if code != 0:
+                        break
+                self.returncode = code
             except Exception as exc:  # noqa: BLE001
                 with self.lock:
                     self.lines.append(f"Fehler: {exc}")
@@ -187,6 +198,33 @@ def make_handler(project: Project, style: Style, job: RenderJob):
                     return self._json({"error": "falsche schema_version"}, 400)
                 save_edit(project, sort_all(doc))
                 return self._json({"saved": True, "path": str(project.edit)})
+            if url.path == "/api/segments":
+                # Schneiden: Passage wegwerfen, teilen, kuerzen. Die Logik liegt
+                # in edits.py, damit sie testbar ist und nicht im Browser haengt.
+                try:
+                    req = json.loads(raw.decode("utf-8") or "{}")
+                except json.JSONDecodeError as exc:
+                    return self._json({"error": f"kein gueltiges JSON: {exc}"}, 400)
+                doc = load_edit(project)
+                action = req.get("action")
+                try:
+                    if action == "delete":
+                        stats = delete_segment(doc, req["id"])
+                    elif action == "split":
+                        stats = split_segment(doc, req["id"], float(req["t"]))
+                    elif action == "trim":
+                        stats = trim_segment(doc, req["id"],
+                                             source_in=req.get("source_in"),
+                                             source_out=req.get("source_out"))
+                    elif action == "delete_range":
+                        stats = delete_range(doc, float(req["t_in"]), float(req["t_out"]))
+                    else:
+                        return self._json({"error": f"unbekannte Aktion: {action}"}, 400)
+                except (ValueError, KeyError) as exc:
+                    return self._json({"error": str(exc)}, 400)
+                save_edit(project, doc)
+                return self._json({"ok": True, "stats": stats, "doc": doc})
+
             if url.path == "/api/render":
                 opts = json.loads(raw.decode("utf-8") or "{}")
                 args = [sys.executable, "-m", "vidkit", "render", "-p", project.name]
@@ -195,11 +233,21 @@ def make_handler(project: Project, style: Style, job: RenderJob):
                 stage = opts.get("from_stage")
                 if stage:
                     args += ["--from-stage", stage]
-                started = job.start(args, repo_root())
-                return self._json({"started": started})
+                # Veraltete Overlays vorher neu bauen — sonst stehen sie nach
+                # einem Schnitt an der falschen Stelle oder fehlen ganz.
+                steps = []
+                try:
+                    from .assets import stale_elements
+                    if stale_elements(project, style, load_edit(project)):
+                        steps.append([sys.executable, "-m", "vidkit", "assets",
+                                      "-p", project.name])
+                except Exception:  # noqa: BLE001
+                    pass
+                steps.append(args)
+                return self._json({"started": job.start(steps, repo_root())})
             if url.path == "/api/assets":
                 args = [sys.executable, "-m", "vidkit", "assets", "-p", project.name]
-                return self._json({"started": job.start(args, repo_root())})
+                return self._json({"started": job.start([args], repo_root())})
             return self._json({"error": "unbekannte Route"}, 404)
 
     return Handler

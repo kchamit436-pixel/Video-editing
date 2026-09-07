@@ -131,11 +131,15 @@ Läuft auf `127.0.0.1:8777`, ohne Anmeldung, ohne Internet. Links das Video,
 darunter die Zeitleiste mit allen Elementen aus der `edit.json` als Blöcke:
 Captions, Overlays, Zooms, Motion Graphics, B-Roll, Sounds.
 
+* **Passagen wegwerfen:** oberste Spur „Passagen" — Block anklicken, „Passage
+  wegwerfen". Alles dahinter rutscht automatisch nach vorn, Captions und Sounds
+  in der Passage fallen mit weg. „Hier teilen" trennt am Abspielkopf.
 * Block ziehen = verschieben, an den Rändern ziehen = verlängern
 * Block anklicken = Text, Zeiten und Einstellungen rechts bearbeiten
 * Entf löscht, Leertaste startet und stoppt, ⌘S speichert
 * Änderungen gehen direkt in die `edit.json` (automatisch nach kurzer Pause)
-* „Rendern" startet den Render-Schritt und zeigt das Log
+* „Rendern" startet den Render-Schritt und zeigt das Log — veraltete Overlays
+  werden dabei automatisch neu gebaut
 
 Angezeigt wird die zuletzt gerenderte Fassung (`preview.mp4`, sonst `out.mp4`).
 Ist noch nichts gerendert, siehst du `ingest.mp4` — dessen Zeiten weichen von

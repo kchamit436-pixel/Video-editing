@@ -1,9 +1,11 @@
 /* vidkit — Zeitleiste zum Bearbeiten der edit.json. Kein Framework, mit Absicht. */
 (() => {
   const $ = (s) => document.querySelector(s);
-  const KINDS = ["captions", "overlays", "zooms", "motion_graphics", "broll", "sfx"];
-  const LABEL = { captions: "Captions", overlays: "Overlays", zooms: "Zooms",
-                  motion_graphics: "Motion", broll: "B-Roll", sfx: "Sound" };
+  const KINDS = ["segments", "captions", "overlays", "zooms", "motion_graphics",
+                 "broll", "sfx"];
+  const LABEL = { segments: "Passagen", captions: "Captions", overlays: "Overlays",
+                  zooms: "Zooms", motion_graphics: "Motion", broll: "B-Roll",
+                  sfx: "Sound" };
   const state = { doc: null, info: null, sel: null, pxPerSec: 90, dirty: false };
 
   const video = $("#video");
@@ -118,7 +120,12 @@
     b.dataset.kind = kind;
     b.dataset.id = el.id;
     b.style.background = `var(--${kind})`;
-    if (point) {
+    if (kind === "segments") {
+      b.style.left = px(el.t_in) + "px";
+      b.style.width = Math.max(4, px(el.t_out - el.t_in) - 2) + "px";
+      b.textContent = `${(el.t_out - el.t_in).toFixed(1)}s`;
+      b.title = `${el.id} · Quelle ${el.source_in.toFixed(2)}–${el.source_out.toFixed(2)}s`;
+    } else if (point) {
       b.style.left = px(el.t) + "px";
       b.title = `${el.id} · ${el.category || ""} @ ${el.t.toFixed(2)}s`;
     } else {
@@ -130,7 +137,14 @@
       b.appendChild(Object.assign(document.createElement("div"), { className: "h r" }));
     }
     if (state.sel && state.sel.id === el.id) b.classList.add("sel");
-    b.addEventListener("mousedown", (ev) => startDrag(ev, kind, el, b));
+    if (kind === "segments") {
+      // Passagen werden nicht gezogen — sie haengen an der Quelle. Sie werden
+      // ausgewaehlt und dann geteilt, gekuerzt oder weggeworfen.
+      b.style.cursor = "pointer";
+      b.addEventListener("mousedown", (ev) => { ev.preventDefault(); select(kind, el.id); });
+    } else {
+      b.addEventListener("mousedown", (ev) => startDrag(ev, kind, el, b));
+    }
     return b;
   }
 
@@ -206,6 +220,37 @@
     const { kind, el } = state.sel;
     const rows = [];
     rows.push(`<h3>${LABEL[kind]} · <span class="mono muted">${el.id}</span></h3>`);
+    if (kind === "segments") {
+      const len = el.t_out - el.t_in;
+      rows.push(`<div class="muted" style="font-size:12px;margin-bottom:8px">
+        Länge ${len.toFixed(2)} s · im Rohvideo ${el.source_in.toFixed(2)}–${el.source_out.toFixed(2)} s</div>`);
+      rows.push(`<div class="row"><div><label>Anfang im Rohvideo (s)</label>
+        <input data-seg="source_in" type="number" step="0.05" value="${el.source_in}"></div>
+        <div><label>Ende im Rohvideo (s)</label>
+        <input data-seg="source_out" type="number" step="0.05" value="${el.source_out}"></div></div>`);
+      rows.push(`<div class="row" style="margin-top:12px">
+        <button id="seekto">Anspielen</button>
+        <button id="segsplit">Hier teilen</button></div>`);
+      rows.push(`<button id="segdel" class="danger" style="width:100%;margin-top:8px">
+        Passage wegwerfen</button>`);
+      rows.push(`<div class="muted" style="font-size:11px;margin-top:8px">
+        Alles danach rutscht automatisch nach vorn. Captions, Overlays und Sounds
+        in dieser Passage fallen mit weg.</div>`);
+      box.innerHTML = rows.join("");
+      $("#seekto").onclick = () => { video.currentTime = el.t_in; };
+      $("#segsplit").onclick = () => segmentAction(
+        { action: "split", id: el.id, t: video.currentTime },
+        "Der Abspielkopf muss innerhalb der Passage stehen.");
+      $("#segdel").onclick = () => segmentAction({ action: "delete", id: el.id });
+      box.querySelectorAll("[data-seg]").forEach((input) => {
+        input.addEventListener("change", () => segmentAction({
+          action: "trim", id: el.id,
+          source_in: parseFloat(box.querySelector('[data-seg="source_in"]').value),
+          source_out: parseFloat(box.querySelector('[data-seg="source_out"]').value),
+        }));
+      });
+      return;
+    }
     if (kind === "sfx") {
       rows.push(`<label>Zeit (s)</label><input data-f="t" type="number" step="0.01" value="${el.t}">`);
       rows.push(`<label>Kategorie</label><input data-f="category" value="${el.category || ""}">`);
@@ -254,6 +299,24 @@
       markDirty();
       render();
     };
+  }
+
+  // Schnitt serverseitig ausfuehren — die Zeitachse wird dort neu gerechnet.
+  async function segmentAction(payload, hint) {
+    setStatus("schneide …");
+    const res = await fetch("/api/segments", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const out = await res.json();
+    if (out.error) { setStatus((hint ? hint + " " : "") + out.error, true); return; }
+    state.doc = out.doc;
+    state.sel = null;
+    render();
+    showInspector();
+    const s = out.stats || {};
+    setStatus(`geschnitten — ${s.removed || 0} Elemente entfernt, `
+      + `${s.moved || 0} verschoben. Neu rendern für die Vorschau.`);
   }
 
   // --- Abspielkopf ---------------------------------------------------------
@@ -310,7 +373,9 @@
     if (e.target.matches("input, textarea")) return;
     if (e.key === " ") { e.preventDefault(); video.paused ? video.play() : video.pause(); }
     if (e.key === "s" && (e.metaKey || e.ctrlKey)) { e.preventDefault(); save(); }
-    if ((e.key === "Backspace" || e.key === "Delete") && state.sel) $("#del")?.click();
+    if ((e.key === "Backspace" || e.key === "Delete") && state.sel) {
+      (state.sel.kind === "segments" ? $("#segdel") : $("#del"))?.click();
+    }
   });
   window.addEventListener("beforeunload", (e) => { if (state.dirty) e.preventDefault(); });
 
