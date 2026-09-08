@@ -1,0 +1,265 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_jVaWmY": {
+      "type": "hero",
+      "blocks": {
+        "text_YLPk4p": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground-heading)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "button_H9gpTf": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "JETZT KAUFEN",
+            "link": "shopify://products/somaband",
+            "open_in_new_tab": false,
+            "style_class": "button",
+            "width": "custom",
+            "custom_width": 25,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 21
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_YLPk4p",
+        "button_H9gpTf"
+      ],
+      "name": "t:names.hero",
+      "settings": {
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/ChatGPT_Image_8__Sept__2026__12_58_59__1.webp",
+        "media_type_2": "image",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": true,
+        "media_type_1_mobile": "image",
+        "image_1_mobile": "shopify://shop_images/ChatGPT_Image_8__Sept__2026__13_13_15.webp",
+        "media_type_2_mobile": "image",
+        "link": "",
+        "open_in_new_tab": false,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "space-between",
+        "vertical_alignment": "flex-end",
+        "align_baseline": true,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "flex-end",
+        "gap": 24,
+        "section_width": "page-width",
+        "section_height": "medium",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-6",
+        "toggle_overlay": false,
+        "overlay_color": "#12121266",
+        "overlay_style": "solid",
+        "gradient_direction": "to bottom",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 100,
+        "padding-block-end": 72
+      }
+    },
+    "value_bar_2": {
+      "type": "value-bar-2",
+      "disabled": true,
+      "custom_css": [
+        ".study-wrapper {margin-top: 10px;}"
+      ],
+      "settings": {}
+    },
+    "somaband_home_hero_jw4WME": {
+      "type": "ka",
+      "disabled": true,
+      "name": "SomaBand Home Hero",
+      "settings": {}
+    },
+    "st_scrolling_users_Nm3DDn": {
+      "type": "st_scrolling-users",
+      "blocks": {
+        "benefit_gFRrwP": {
+          "type": "benefit",
+          "settings": {
+            "username": "alexrunner",
+            "show_verified_badge": true,
+            "description": "Marathon Läufer",
+            "show_link": false,
+            "link": "",
+            "social_icon": "1"
+          }
+        },
+        "benefit_giUjeN": {
+          "type": "benefit",
+          "settings": {
+            "username": "sarahslife",
+            "show_verified_badge": true,
+            "description": "Fitness Creator",
+            "show_link": false,
+            "link": "",
+            "social_icon": "1"
+          }
+        },
+        "benefit_L8FgwY": {
+          "type": "benefit",
+          "settings": {
+            "username": "markusbeiner",
+            "show_verified_badge": true,
+            "description": "Personal Trainer",
+            "show_link": false,
+            "link": "",
+            "social_icon": "1"
+          }
+        },
+        "benefit_i9gXwX": {
+          "type": "benefit",
+          "settings": {
+            "username": "emilywellness",
+            "show_verified_badge": true,
+            "description": "Gesundheits Coach",
+            "show_link": false,
+            "link": "",
+            "social_icon": "1"
+          }
+        },
+        "benefit_rMG9Yz": {
+          "type": "benefit",
+          "settings": {
+            "avatar": "shopify://shop_images/ChatGPT_Image_8._Juli_2026_18_56_54.png",
+            "username": "Sebastianschmelz",
+            "show_verified_badge": true,
+            "description": "Schlafexperte",
+            "show_link": false,
+            "link": "",
+            "social_icon": "1"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_gFRrwP",
+        "benefit_giUjeN",
+        "benefit_L8FgwY",
+        "benefit_i9gXwX",
+        "benefit_rMG9Yz"
+      ],
+      "name": "💫: Scrolling Users",
+      "settings": {
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "section_bg_color": "#ffffff",
+        "enable_card_layout": false,
+        "max_width": 1400,
+        "show_header": false,
+        "content_gap": 15,
+        "header_title": "Trusted by [real people.]",
+        "header_title_color": "#1a1a1a",
+        "header_title_highlight_color": "#dbbd21",
+        "header_title_font": "poppins_n6",
+        "header_title_fontsize_desktop": 34,
+        "header_title_fontsize_mobile": 24,
+        "header_subtitle": "Join thousands of happy customers",
+        "header_subtitle_color": "#666666",
+        "header_subtitle_font": "poppins_n4",
+        "header_subtitle_fontsize_desktop": 16,
+        "header_subtitle_fontsize_mobile": 14,
+        "verified_badge_color": "#1d9bf0",
+        "social_icon_color": "#666666",
+        "avatar_size": 40,
+        "avatar_size_mobile": 36,
+        "avatar_border_radius": 50,
+        "black_white_filter": false,
+        "username_color": "#1a1a1a",
+        "username_font": "poppins_n6",
+        "username_size_desktop": 14,
+        "username_size_mobile": 12,
+        "description_color": "#666666",
+        "description_font": "poppins_n4",
+        "description_size_desktop": 12,
+        "description_size_mobile": 10,
+        "spacing_between": 60,
+        "scroll_speed": 40,
+        "scroll_direction": "left",
+        "pause_on_hover": false,
+        "show_slider_fade": true
+      }
+    },
+    "sleepzlab_homepage_Lpgkkh": {
+      "type": "sleepzlab-homepage",
+      "name": "SleepzLab Home Carousel",
+      "settings": {
+        "gift_image": "shopify://shop_images/ChatGPT_Image_8._Juli_2026_16_43_12.png",
+        "product_headline": "Unsere Bestseller",
+        "product_sub": "",
+        "home_product_1": "somaband",
+        "badge_1": "Spare bis zu 53%",
+        "home_product_2": "premium-schlafmaske",
+        "badge_2": "Beliebt",
+        "home_product_3": "premium-mundtapes",
+        "badge_3": "Niedrige stückzahl",
+        "home_product_4": "premium-nasenstrips",
+        "badge_4": "Neu im Shop",
+        "home_product_5": "lavendel-duftbeutel",
+        "badge_5": "",
+        "proof_headline": "",
+        "proof_sub": "",
+        "story_headline": "Ein besserer Weg, wach zu werden.",
+        "story_text": "Kein lauter Alarm, kein aufgeschreckter Morgen – nur eine sanfte Vibration, die dich zuverlässig weckt.",
+        "info_image_1": "shopify://shop_images/ChatGPT_Image_8__Juli_2026__15_34_45__1.webp",
+        "info_caption_1": "",
+        "info_image_2": "shopify://shop_images/ChatGPT_Image_8__Juli_2026__15_34_45__3.webp",
+        "info_caption_2": "",
+        "info_image_3": "shopify://shop_images/ChatGPT_Image_8__Juli_2026__15_34_45__2.webp",
+        "info_caption_3": "",
+        "promise_image_1": "shopify://shop_images/ChatGPT_Image_11__Juli_2026__13_24_17.webp",
+        "promise_image_2": "shopify://shop_images/ChatGPT_Image_11__Juli_2026__13_24_14.webp",
+        "promise_image_3": "shopify://shop_images/ChatGPT_Image_11__Juli_2026__13_24_24.webp",
+        "promise_image_4": "shopify://shop_images/ChatGPT_Image_11__Juli_2026__13_24_20.webp",
+        "cta_image": "shopify://shop_images/ChatGPT_Image_11__Juli_2026__22_45_25.webp",
+        "cta_title": "Bereit für ruhigere Morgen?",
+        "cta_text": "Starte mit dem SomaBand – mit 100% Aufwachgarantie und 30 Nächten zum Testen.",
+        "cta_button": "Produkte ansehen",
+        "collection_link": "",
+        "wall_headline": "Was unsere Kunden sagen.",
+        "wall_sub": "Echte Rückmeldungen aus tausenden ruhigeren Morgen."
+      }
+    }
+  },
+  "order": [
+    "hero_jVaWmY",
+    "value_bar_2",
+    "somaband_home_hero_jw4WME",
+    "st_scrolling_users_Nm3DDn",
+    "sleepzlab_homepage_Lpgkkh"
+  ]
+}

@@ -1,0 +1,92 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "Premium-nasenstrips",
+      "blocks": {
+        "sternify_sternify_bundle_XyFcxz": {
+          "type": "shopify://apps/sternify/blocks/sternify_bundle/fcc6e879-7d9e-4924-b387-68cfab68cec6",
+          "settings": {
+            "Abstand_oben": 0,
+            "Abstand_unten": 0,
+            "product": "{{section.settings.product}}"
+          }
+        }
+      },
+      "block_order": [
+        "sternify_sternify_bundle_XyFcxz"
+      ],
+      "settings": {
+        "product": "",
+        "headline": "Premium Nasenstrips",
+        "subheadline": "Federnde Bügel heben die Nasenflügel sanft an und weiten den Luftweg – rein mechanisch, ohne Wirkstoff. Für ruhigere Nächte und freieres Atmen beim Training.",
+        "show_countdown": true,
+        "related_products": [
+          "somaband",
+          "premium-mundtapes",
+          "premium-schlafmaske"
+        ],
+        "dark_headline": "Ein Streifen. Ein spürbar freierer Atemweg.",
+        "benefit_image_1": "shopify://shop_images/ChatGPT_Image_11._Juli_2026_10_16_42_1.png",
+        "benefit_title_1": "",
+        "benefit_image_2": "shopify://shop_images/ChatGPT_Image_11._Juli_2026_10_16_42_2.png",
+        "benefit_title_2": "",
+        "benefit_image_3": "shopify://shop_images/ChatGPT_Image_11._Juli_2026_10_16_42_4.png",
+        "benefit_title_3": "",
+        "benefit_image_4": "shopify://shop_images/ChatGPT_Image_11._Juli_2026_10_17_21.png",
+        "benefit_title_4": ""
+      }
+    },
+    "1786745852d1a733b3": {
+      "type": "_blocks",
+      "blocks": {
+        "appstle_subscription_appstle_subscription_product_page_widget_hfqHBB": {
+          "type": "shopify://apps/appstle-subscription/blocks/appstle-subscription-product-page-widget/fe257d39-6f88-4f35-ab08-bd437e3aa94e",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "appstle_subscription_appstle_subscription_product_page_widget_hfqHBB"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1786745852d1a733b3"
+  ]
+}

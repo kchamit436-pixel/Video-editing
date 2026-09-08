@@ -1,0 +1,91 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "premium_mundtapes": {
+      "type": "Premium-Mundtapes",
+      "blocks": {
+        "sternify_sternify_bundle_cJqni9": {
+          "type": "shopify://apps/sternify/blocks/sternify_bundle/fcc6e879-7d9e-4924-b387-68cfab68cec6",
+          "settings": {
+            "Abstand_oben": 0,
+            "Abstand_unten": 0,
+            "product": "{{section.settings.product}}"
+          }
+        }
+      },
+      "block_order": [
+        "sternify_sternify_bundle_cJqni9"
+      ],
+      "settings": {
+        "product": "",
+        "headline": "SleepzLab Mundtapes",
+        "subheadline": "Weiche Baumwolle mit hautfreundlichem Kleber hält deine Lippen über Nacht sanft geschlossen – für ruhige Nasenatmung, weniger Schnarchen und einen Morgen ohne trockenen Hals.",
+        "show_countdown": true,
+        "related_products": [
+          "somaband",
+          "premium-nasenstrips",
+          "premium-schlafmaske"
+        ],
+        "feature_image": "shopify://shop_images/ChatGPT_Image_9._Juli_2026_22_07_58.png",
+        "split_headline": "Schlaf zurückgewinnen – mit einem Streifen.",
+        "gallery_image_1": "shopify://shop_images/ChatGPT_Image_11._Juli_2026_00_00_37_1.png",
+        "gallery_caption_1": "Sanft am Mund",
+        "gallery_image_2": "shopify://shop_images/ChatGPT_Image_11._Juli_2026_00_00_37_2.png",
+        "gallery_caption_2": "Ruhige Nächte",
+        "gallery_image_3": "shopify://shop_images/ChatGPT_Image_11._Juli_2026_00_00_33_2.png",
+        "gallery_caption_3": "Frischer Morgen"
+      }
+    },
+    "17867452196ecec389": {
+      "type": "_blocks",
+      "blocks": {
+        "appstle_subscription_appstle_subscription_product_page_widget_9Wq93t": {
+          "type": "shopify://apps/appstle-subscription/blocks/appstle-subscription-product-page-widget/fe257d39-6f88-4f35-ab08-bd437e3aa94e",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "appstle_subscription_appstle_subscription_product_page_widget_9Wq93t"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    }
+  },
+  "order": [
+    "premium_mundtapes",
+    "17867452196ecec389"
+  ]
+}

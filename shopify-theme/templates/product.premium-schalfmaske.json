@@ -1,0 +1,62 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "Premium-schlafmaske",
+      "blocks": {
+        "sternify_sternify_bundle_zXweee": {
+          "type": "shopify://apps/sternify/blocks/sternify_bundle/fcc6e879-7d9e-4924-b387-68cfab68cec6",
+          "settings": {
+            "Abstand_oben": 0,
+            "Abstand_unten": 0,
+            "product": "{{section.settings.product}}"
+          }
+        }
+      },
+      "block_order": [
+        "sternify_sternify_bundle_zXweee"
+      ],
+      "settings": {
+        "product": "premium-schlafmaske",
+        "headline_brand": "Schlafmaske",
+        "subheadline": "Konturgeformte Augenhöhlen, dichter Sitz an Nase und Wangen, atmungsaktiver Innenstoff. Für eine Nacht, in der wirklich kein Licht mehr stört.",
+        "show_countdown": true,
+        "xsell_headline": "Setup vervollständigen",
+        "xsell_products": [
+          "somaband",
+          "premium-nasenstrips",
+          "premium-mundtapes"
+        ],
+        "feat_image_1": "shopify://shop_images/ChatGPT_Image_10._Juli_2026_08_53_39.png",
+        "feat_title_1": "Atmungsaktiver Stoff",
+        "feat_text_1": "Der Innenstoff leitet Feuchtigkeit ab, statt sie zu stauen. Auch nach acht Stunden fühlt sich die Maske trocken an.",
+        "feat_image_2": "shopify://shop_images/ChatGPT_Image_10._Juli_2026_08_49_48_1.png",
+        "feat_title_2": "Hochwertiges Material",
+        "feat_text_2": "Weiche Oberfläche, saubere Nähte, formstabile Polsterung. Nichts fusselt, nichts verzieht sich nach der ersten Wäsche.",
+        "feat_image_3": "shopify://shop_images/ChatGPT_Image_10._Juli_2026_08_49_48_2.png",
+        "feat_title_3": "Perfekte Passform",
+        "feat_text_3": "Die Konturform folgt dem Nasenrücken und den Wangenknochen. Genau dort, wo flache Masken Licht durchlassen.",
+        "feat_image_4": "shopify://shop_images/ChatGPT_Image_10._Juli_2026_08_49_48_4.png",
+        "feat_title_4": "Verstellbares Band",
+        "feat_text_4": "Einmal einstellen, dann sitzt sie. Flach genug, dass es beim Liegen auf der Seite nicht drückt.",
+        "dark_headline": "Dunkelheit ist keine Kleinigkeit.",
+        "dark_text": "Licht auf den Lidern signalisiert deinem Körper: Tag. Erst in vollständiger Dunkelheit läuft die nächtliche Melatoninproduktion ungestört.",
+        "ba_image_before": "shopify://shop_images/ChatGPT_Image_11._Juli_2026_00_14_59_1.png",
+        "ba_image_after": "shopify://shop_images/ChatGPT_Image_11._Juli_2026_00_14_59_2.png",
+        "material_image": "shopify://shop_images/ChatGPT_Image_12._Juli_2026_10_28_04.png",
+        "spec_care": "Von Hand mit lauwarmem Wasser waschen, an der Luft trocknen lassen."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

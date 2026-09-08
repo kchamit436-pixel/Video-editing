@@ -1,0 +1,361 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "product-information",
+      "blocks": {
+        "media-gallery": {
+          "type": "_product-media-gallery",
+          "disabled": true,
+          "static": true,
+          "settings": {
+            "media_presentation": "carousel",
+            "media_columns": "one",
+            "image_gap": 0,
+            "large_first_image": false,
+            "icons_style": "none",
+            "slideshow_controls_style": "counter",
+            "slideshow_mobile_controls_style": "dots",
+            "thumbnail_position": "right",
+            "thumbnail_width": 44,
+            "thumbnail_radius": 0,
+            "aspect_ratio": "adapt",
+            "constrain_to_viewport": true,
+            "media_fit": "contain",
+            "media_radius": 0,
+            "extend_media": false,
+            "zoom": true,
+            "video_loop": false,
+            "hide_variants": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "product-details": {
+          "type": "_product-details",
+          "disabled": true,
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "details_position": "flex-start",
+            "gap": 28,
+            "sticky_details_desktop": true,
+            "inherit_color_scheme": true,
+            "color_scheme": "scheme-1",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "group_icgrde": {
+              "type": "group",
+              "name": "Header",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "placeholder": "",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "text_xrnftG": {
+                  "type": "text",
+                  "name": "Product title",
+                  "settings": {
+                    "text": "<h1>{{ closest.product.title }}</h1>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "h3",
+                    "font": "var(--font-primary--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "price_tVjtKg": {
+                  "type": "price",
+                  "settings": {
+                    "show_sale_price_first": true,
+                    "show_installments": false,
+                    "show_tax_info": false,
+                    "type_preset": "paragraph",
+                    "width": "100%",
+                    "alignment": "left",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "color": "var(--color-foreground)",
+                    "padding-block-start": 4,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_xrnftG",
+                "price_tVjtKg"
+              ]
+            },
+            "divider_VJhene": {
+              "type": "_divider",
+              "name": "t:names.divider",
+              "settings": {
+                "thickness": 1,
+                "corner_radius": "square",
+                "width_percent": 100,
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
+            "variant_picker_R3rGDr": {
+              "type": "variant-picker",
+              "settings": {
+                "variant_style": "buttons",
+                "show_swatches": false,
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "buy_buttons_eYQEYi": {
+              "type": "buy-buttons",
+              "settings": {
+                "stacking": true,
+                "show_pickup_availability": false,
+                "gift_card_form": true,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            },
+            "text_aEtTtq": {
+              "type": "text",
+              "name": "Product description",
+              "settings": {
+                "text": "{{ closest.product.description }}",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-primary--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "group_icgrde",
+            "divider_VJhene",
+            "variant_picker_R3rGDr",
+            "buy_buttons_eYQEYi",
+            "text_aEtTtq"
+          ]
+        }
+      },
+      "disabled": true,
+      "settings": {
+        "content_width": "content-center-aligned",
+        "desktop_media_position": "left",
+        "equal_columns": true,
+        "limit_details_width": false,
+        "gap": 48,
+        "enable_sticky_add_to_cart": true,
+        "color_scheme": "",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "somaband_product_hero_WhCP3r": {
+      "type": "somaband",
+      "blocks": {
+        "sternify_sternify_bundle_ibXX8q": {
+          "type": "shopify://apps/sternify/blocks/sternify_bundle/fcc6e879-7d9e-4924-b387-68cfab68cec6",
+          "settings": {
+            "Abstand_oben": 0,
+            "Abstand_unten": 0,
+            "product": "{{section.settings.product}}"
+          }
+        }
+      },
+      "block_order": [
+        "sternify_sternify_bundle_ibXX8q"
+      ],
+      "custom_css": [
+        ".product__media-wrapper {align-self: flex-start !important;}",
+        ".product__info-wrapper {align-self: flex-start !important;}"
+      ],
+      "name": "SomaBand Product Hero",
+      "settings": {
+        "product": "somaband",
+        "show_countdown": true,
+        "show_shipping_timeline": true,
+        "hero_h1_thin": "Der lautlose Wecker",
+        "hero_h1_bold": "Für die Schichtarbeit",
+        "hero_sub": "<p><em>Erlebe das gefühl lautlos aufzustehen, dank </em><em><strong>zuverlässigen Vibrationen am Handgelenk</strong></em><em> statt Alarm im Schlafzimmer.</em></p><p><em><strong>Dein Partner schläft weiter,</strong></em><em> während du schon aus dem Haus bist.</em></p>",
+        "trust_1": "30 Nächte risikofrei testen",
+        "trust_icon_1": "shield",
+        "trust_2": "Kein Ton, weckt nur dich",
+        "trust_icon_2": "silent",
+        "trust_3": "Versand innerhalb 1-2 Werktagen aus Deutschland",
+        "trust_icon_3": "truck",
+        "featured_headline": "„Aufstehen war jeden Morgen ein Kampf.\"",
+        "featured_caption": "Aus einer Kundenbewertung",
+        "compare_headline": "Drei Wege aufzuwachen. Einer passt zum Schichtplan.",
+        "compare_sub": "Was passiert, wenn morgens der Wecker losgeht – im direkten Vergleich.",
+        "faq_extra_q": "",
+        "faq_extra_a": "",
+        "review_photo_1": "shopify://shop_images/IMG_0879.jpg",
+        "review_photo_2": "shopify://shop_images/IMG_8333.heic",
+        "review_photo_3": "shopify://shop_images/IMG_9677.jpg",
+        "review_photo_4": "shopify://shop_images/IMG_6419.png",
+        "review_photo_5": "shopify://shop_images/f3bcd811-d83c-48c0-9125-b1b97424157a.jpg",
+        "review_photo_6": "shopify://shop_images/b089d587-b91e-4bbc-b132-e5c830bab34a.jpg",
+        "review_photo_7": "shopify://shop_images/image.png",
+        "review_photo_8": "shopify://shop_images/56740161-F5B1-423C-B1B6-B7C48448DA05.jpg",
+        "review_photo_9": "shopify://shop_images/D6E7E12F-BA8E-4AB9-BDB4-8481DCE9601C.png",
+        "review_photo_10": "shopify://shop_images/IMG_0748.jpg",
+        "review_photo_11": "shopify://shop_images/IMG_9916.heic",
+        "review_photo_12": "shopify://shop_images/IMG_6795.heic",
+        "review_photo_13": "shopify://shop_images/IMG_0211.heic",
+        "review_photo_14": "shopify://shop_images/IMG_6252.heic",
+        "review_photo_15": "shopify://shop_images/IMG_7473.png",
+        "expert_photo_1": "shopify://shop_images/woman-in-sports-clothes-stands-on-a-beach-in-the-morning-light.jpg",
+        "expert_photo_2": "shopify://shop_images/heavy-lifting-man.jpg",
+        "expert_photo_3": "shopify://shop_images/man-in-blue-jacket.jpg",
+        "expert_photo_4": "shopify://shop_images/man-dressed-in-monochrome-by-white-wall.jpg",
+        "expert_photo_5": "shopify://shop_images/IMG_7394.jpg",
+        "expert_photo_6": "shopify://shop_images/IMG_7395.jpg",
+        "expert_photo_7": "shopify://shop_images/IMG_7393.jpg",
+        "expert_photo_8": "shopify://shop_images/IMG_7397.jpg",
+        "expert_photo_9": "shopify://shop_images/IMG_7398.jpg",
+        "expert_photo_10": "shopify://shop_images/the-man-in-the-hat.jpg",
+        "featured_review_image": "shopify://shop_images/ChatGPT_Image_27._Aug._2026_13_21_47_1.png",
+        "gallery_image_1": "shopify://shop_images/ChatGPT_Image_8._Juli_2026_13_32_48_1.png",
+        "gallery_caption_1": "14+ Tage Akkulaufzeit",
+        "gallery_image_2": "shopify://shop_images/ChatGPT_Image_8._Juli_2026_15_34_45_3.png",
+        "gallery_caption_2": "Tiefschläfer approved",
+        "gallery_image_3": "shopify://shop_images/ChatGPT_Image_8._Juli_2026_15_34_45_2.png",
+        "gallery_caption_3": "Bester Service für Dich",
+        "guarantee_image": "shopify://shop_images/aufwachgarnarie.png",
+        "strip_title": "Mehr von SomaBand",
+        "strip_products": [
+          "premium-schlafmaske",
+          "premium-nasenstrips",
+          "premium-mundtapes"
+        ]
+      }
+    }
+  },
+  "order": [
+    "main",
+    "somaband_product_hero_WhCP3r"
+  ]
+}

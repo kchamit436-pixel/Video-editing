@@ -1,0 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "lavendel-duftbeutel",
+      "settings": {
+        "product": "",
+        "headline_accent": "Lavendel",
+        "subheadline": "100 % echte, getrocknete Lavendelblüten im Organzasäckchen. Hält Motten fern, duftet monatelang und kommt ganz ohne Chemie aus – für Schrank, Schublade, Auto und Schlafzimmer.",
+        "show_countdown": true,
+        "related_product_1": "somaband",
+        "related_product_2": "premium-schlafmaske",
+        "related_product_3": "premium-mundtapes",
+        "feat_image_1": "shopify://shop_images/ChatGPT_Image_11._Juli_2026_12_29_58_1.png",
+        "feat_title_1": "100 % echte Blüten",
+        "feat_image_2": "shopify://shop_images/ChatGPT_Image_11._Juli_2026_12_29_58_3.png",
+        "feat_title_2": "Ohne Zusatzstoffe",
+        "feat_image_3": "shopify://shop_images/exec-ad27f6e0-af4a-413c-ba0a-116e9783f3bb.png",
+        "feat_title_3": "Natürlicher Mottenschutz",
+        "feat_image_4": "shopify://shop_images/ChatGPT_Image_11._Juli_2026_12_29_58_4.png",
+        "feat_title_4": "Duft zum Auffrischen",
+        "dark_headline": "Duft ist keine Kleinigkeit.",
+        "showcase_image": "shopify://shop_images/ChatGPT_Image_12._Juli_2026_09_35_10.png"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
