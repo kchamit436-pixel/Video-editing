@@ -1,0 +1,55 @@
+{
+  "haut_neutral": {
+    "titel": "Haut Neutral",
+    "beschreibung": "Sicherer Grundlook. Haut bleibt Haut, nur sauberer: eine Spur Waerme, Kontrast im Mittelton, Schatten leicht kuehl. Nimm den, wenn du nicht weisst, welchen du nehmen sollst.",
+    "belichtung": 0.06,
+    "temperatur": 0.10,
+    "tint": 0.02,
+    "schwarzpunkt": 0.010,
+    "kontrast": 0.30,
+    "pivot": 0.44,
+    "saettigung": 1.04,
+    "dynamik": 0.30,
+    "hautschutz": 0.70,
+    "schatten_farbe": [-0.010, 0.004, 0.030],
+    "schatten_staerke": 0.55,
+    "lichter_farbe": [0.030, 0.010, -0.020],
+    "lichter_staerke": 0.40
+  },
+
+  "warm_marke": {
+    "titel": "Warm Marke",
+    "beschreibung": "Waermer und satter, Schatten ins Blaugruene. Der uebliche Werbelook fuer Talking Heads. Bei sehr heller Haut kann es schnell zu orange werden — dann Temperatur runter.",
+    "belichtung": 0.10,
+    "temperatur": 0.22,
+    "tint": 0.04,
+    "schwarzpunkt": 0.020,
+    "kontrast": 0.45,
+    "pivot": 0.43,
+    "saettigung": 1.12,
+    "dynamik": 0.35,
+    "hautschutz": 0.60,
+    "schatten_farbe": [-0.022, 0.006, 0.048],
+    "schatten_staerke": 0.75,
+    "lichter_farbe": [0.048, 0.018, -0.030],
+    "lichter_staerke": 0.60
+  },
+
+  "kuehl_klar": {
+    "titel": "Kuehl Klar",
+    "beschreibung": "Kuehler, klarer, mehr Kontrast, weniger Farbe. Passt zu weissen Flaechen, Technik und hartem Licht. Vorsicht bei blasser Haut, die wird hier schnell fahl.",
+    "belichtung": 0.04,
+    "temperatur": -0.10,
+    "tint": -0.02,
+    "schwarzpunkt": 0.006,
+    "kontrast": 0.52,
+    "pivot": 0.46,
+    "saettigung": 0.94,
+    "dynamik": 0.20,
+    "hautschutz": 0.80,
+    "schatten_farbe": [-0.016, 0.000, 0.036],
+    "schatten_staerke": 0.60,
+    "lichter_farbe": [0.010, 0.014, 0.024],
+    "lichter_staerke": 0.35
+  }
+}

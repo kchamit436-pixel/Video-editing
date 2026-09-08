@@ -36,3 +36,6 @@ tests/fixtures/*.mp4
 # Remotion: Abhaengigkeiten und Renderergebnisse bleiben lokal.
 remotion/node_modules/
 remotion/out/
+
+# Vorschaubilder der LUTs entstehen beim Aufruf neu.
+assets/luts/vorschau.png
