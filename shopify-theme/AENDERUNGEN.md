@@ -3,6 +3,28 @@
 Stand 08.09.2026. Bitte aufheben: Nach einem Theme-Update kann es sein,
 dass Änderungen an Theme-eigenen Dateien überschrieben werden.
 
+## Ergebnis (PageSpeed Insights, Mobil)
+
+Gemessen auf der Theme-Vorschau, 08.09.2026.
+
+| Messwert | vorher | nachher | Ziel | |
+|---|---|---|---|---|
+| Leistung | 32 | **72** | — | |
+| Total Blocking Time | 3.250 ms | **360 ms** | unter 500 ms | erreicht |
+| Largest Contentful Paint | 16,4 s | **4,3 s** | unter 5 s | erreicht |
+
+Erreicht allein durch die Änderungen an `sections/somaband.liquid`.
+`snippets/scripts.liquid`, der Footer und `layout/theme.liquid` sind
+unangetastet geblieben — siehe „Nicht geändert, aber gefunden".
+
+Anmerkung zur Einschätzung vorab: Die Prognose für die Blockierzeit war zu
+vorsichtig. Erwartet wurden 2.600–2.900 ms, weil die 380 KB Theme-Skripte
+bestehen blieben. Tatsächlich lag der grössere Anteil der Blockierzeit nicht
+im Ausführen dieser Skripte, sondern im Rendern: das späte Stylesheet zwang
+zu einem kompletten Neuberechnen des sehr grossen DOM, dazu kamen das Klonen
+der 20 Experten-Karten und zwei überflüssige Bilddekodierungen. Genau das
+ist weggefallen.
+
 ## Geändert: `sections/somaband.liquid`
 
 Das ist eine **eigene Datei**, kein Bestandteil von Horizon. Ein
