@@ -1,10 +1,12 @@
 import "./index.css";
 import { AbsoluteFill, Composition } from "remotion";
+import { Abfolge, ABFOLGE_DAUER } from "./Abfolge";
 import { Demo, DEMO_WOERTER } from "./Demo";
 import { Caption } from "./elemente/Caption";
 import { Hintergrund } from "./elemente/Hintergrund";
 import { ListenPunkte } from "./elemente/ListenPunkte";
 import { Stempel } from "./elemente/Stempel";
+import { RasterGrund } from "./elemente/RasterGrund";
 import { Titel } from "./elemente/Titel";
 import { UntereDrittel } from "./elemente/UntereDrittel";
 import { Zaehler } from "./elemente/Zaehler";
@@ -29,9 +31,35 @@ const mitGrund =
     </AbsoluteFill>
   );
 
+const mitRaster =
+  <P extends object>(Element: React.FC<P>): React.FC<P> =>
+  (props) => (
+    <AbsoluteFill>
+      <RasterGrund neigung={-7} teilung={84} />
+      <Element {...props} />
+    </AbsoluteFill>
+  );
+
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      {/* Ohne Hintergrund: so exportiert man den Riss mit Alphakanal. */}
+      <Composition
+        id="Abfolge"
+        component={Abfolge}
+        durationInFrames={ABFOLGE_DAUER}
+        {...format}
+        defaultProps={{ qrZiel: "https://deine-marke.de" }}
+      />
+
+      <Composition
+        id="AbfolgeAufRaster"
+        component={mitRaster(Abfolge)}
+        durationInFrames={ABFOLGE_DAUER}
+        {...format}
+        defaultProps={{ qrZiel: "https://deine-marke.de" }}
+      />
+
       <Composition
         id="Demo"
         component={Demo}
