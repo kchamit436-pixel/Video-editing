@@ -32,3 +32,7 @@ tests/fixtures/*.mp4
 
 *.measurements.json
 .DS_Store
+
+# Remotion: Abhaengigkeiten und Renderergebnisse bleiben lokal.
+remotion/node_modules/
+remotion/out/
